@@ -14,7 +14,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <meta name="author" content="">
 <title>SB Admin - Start Bootstrap Template</title>
 
-<link href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="<?php echo base_url(); ?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href="<?php echo base_url(); ?>assets/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-<link href="<?php echo base_url(); ?>assets/css/sb-admin.css" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+<link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
+<link href="<?php echo base_url('assets/font-awesome/css/font-awesome.min.css'); ?>" rel="stylesheet" type="text/css">
+<link href="<?php echo base_url('assets/datatables/dataTables.bootstrap4.css'); ?>" rel="stylesheet">
+<link href="<?php echo base_url('assets/css/sb-admin.css'); ?>" rel="stylesheet">
