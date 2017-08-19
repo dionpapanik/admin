@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Dashboard extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,6 +20,12 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+        if (isset($this->session->userdata['logged_in'])) {
+            $username = ($this->session->userdata['logged_in']['username']);
+            $data = array('username' => $username);
+            $this->load->view('dashboard', $data);
+        } else {
+            redirect(base_url());
+        }
 	}
 }
