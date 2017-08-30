@@ -16,7 +16,7 @@ class Auth extends CI_Controller
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->library('session');
-        $this->load->model('authentication');
+        $this->load->model('authmodel');
     }
 
 
@@ -57,14 +57,16 @@ class Auth extends CI_Controller
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
         $this->form_validation->set_rules($validation);
 
-        if ($this->form_validation->run() == FALSE) {
+        if ($this->form_validation->run() == false) {
             $this->load->view('login');
         } else {
-            $data = $this->input->post(); // this is an array with username & pass
-            $result = $this->authentication->checkLoginData($data);
-            if ($result == TRUE) {
+            $username = $this->input->post('username', true);
+            $password = $this->input->post('password', true);
+
+            $result = $this->authmodel->checkLoginData($username, $password);
+            if ($result == true) {
                 $session_data = array(
-                    'username' => $data['username']
+                    'username' => $username
                 );
                 $this->session->set_userdata('logged_in', $session_data);
 
@@ -81,7 +83,8 @@ class Auth extends CI_Controller
     /**
      *
      */
-    public function userLogout() {
+    public function userLogout()
+    {
         $this->session->unset_userdata('logged_in');
         redirect(base_url());
     }
