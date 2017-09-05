@@ -17,6 +17,7 @@
 
     <div class="row justify-content-center my-md-4 my-sm-4">
         <div class="col-md-auto col-sm-auto">
+            <h4>Welcome at MyService</h4>
             <h4>Log-in to your account</h4>
         </div>
     </div>
@@ -57,6 +58,16 @@
                 <div class="alert alert-danger"><?php echo $invalid_data; ?></div>
             <?php endif; ?>
             <?php echo form_submit(array('id' => 'submit', 'class' => 'btn btn-lg btn-success login-button', 'value' => 'Log In')); ?>
+            <p>
+                <a href="<?php echo base_url('register'); ?>">
+                    <i class="fa fa-user"></i> Create new account
+                </a>
+            </p>
+            <p>
+                <a href="<?php echo base_url('forgotpassword'); ?>">
+                    <i class="fa fa-key"></i> Forgot Password
+                </a>
+            </p>
         </div>
     </div>
     <?php echo form_close(); ?><br/>
