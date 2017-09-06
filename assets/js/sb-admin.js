@@ -55,6 +55,36 @@
     $('#dataTable').DataTable();
   });
 
+
+    $(document).ready(function () {
+        $('form').validate({
+            rules: {
+                username: {
+                    required: true
+                },
+                password: {
+                    required: true
+                }
+            },
+            highlight: function (element) {
+                $(element).closest('.form-group').addClass('is-invalid');
+                console.log($(element).closest('.form-group'));
+            },
+            unhighlight: function (element) {
+                $(element).closest('.form-group').removeClass('is-invalid');
+            },
+            errorElement: 'span',
+            errorClass: 'text-danger',
+            errorPlacement: function (error, element) {
+                if (element.parent('.input-group').length) {
+                    error.insertAfter(element.parent());
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
+    });
+
 })(jQuery); // End of use strict
 
 // Chart.js scripts
