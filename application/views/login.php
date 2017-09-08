@@ -58,16 +58,16 @@
                 <div class="alert alert-danger"><?php echo $invalid_data; ?></div>
             <?php endif; ?>
             <?php echo form_submit(array('id' => 'submit', 'class' => 'btn btn-lg btn-success login-button', 'value' => 'Log In')); ?>
-            <p>
+            <div class="d-inline float-right text-center">
                 <a href="<?php echo base_url('register'); ?>">
                     <i class="fa fa-user"></i> Create new account
                 </a>
-            </p>
-            <p>
+            </div>
+            <div class="d-inline float-left text-center">
                 <a href="<?php echo base_url('forgotpassword'); ?>">
                     <i class="fa fa-key"></i> Forgot Password
                 </a>
-            </p>
+            </div>
         </div>
     </div>
     <?php echo form_close(); ?><br/>
