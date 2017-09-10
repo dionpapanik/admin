@@ -392,11 +392,6 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
     display: flex;
 }
 
-.col-centered {
-    margin: 0 auto;
-    float: none;
-}
-
 .login-button {
     width: 100%;
 }

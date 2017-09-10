@@ -13,7 +13,6 @@ class Auth extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->library('session');
         $this->load->model('authmodel');
@@ -28,6 +27,11 @@ class Auth extends CI_Controller
         $this->load->view('login');
     }
 
+    public function register()
+    {
+        $this->load->view('register');
+    }
+
     /**
      *
      */
@@ -36,8 +40,8 @@ class Auth extends CI_Controller
 
         $validation = array(
             array(
-                'field' => 'username',
-                'label' => 'Username',
+                'field' => 'email',
+                'label' => 'E-mail',
                 'rules' => 'trim|required|xss_clean',
                 'errors' => array(
                     'required' => 'Please Insert %s.',
@@ -60,13 +64,13 @@ class Auth extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('login');
         } else {
-            $username = $this->input->post('username', true);
-            $password = $this->input->post('password', true);
+            $email = $this->security->xss_clean($this->input->post('email', true));
+            $password = $this->security->xss_clean($this->input->post('password', true));
 
-            $result = $this->authmodel->checkLoginData($username, $password);
-            if ($result == true) {
+            $result = $this->authmodel->checkLoginData($email, $password);
+            if ($result !== false) {
                 $session_data = array(
-                    'username' => $username
+                    'username' => $result
                 );
                 $this->session->set_userdata('logged_in', $session_data);
 

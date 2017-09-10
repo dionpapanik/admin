@@ -57,12 +57,46 @@
 
 
     $(document).ready(function () {
-        $('form').validate({
+        $('.login-form').validate({
             rules: {
-                username: {
-                    required: true
+                email: {
+                    required: true,
+                    email: true
                 },
                 password: {
+                    required: true
+                }
+            },
+            highlight: function (element) {
+                $(element).closest('.form-control').addClass('is-invalid');
+            },
+            unhighlight: function (element) {
+                $(element).closest('.form-control').removeClass('is-invalid');
+            },
+            errorElement: 'span',
+            errorClass: 'text-danger',
+            errorPlacement: function (error, element) {
+                if (element.parent('.input-group').length) {
+                    error.insertAfter(element.parent());
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
+
+        $('.register-form').validate({
+            rules: {
+                name: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                password: {
+                    required: true
+                },
+                verify_password: {
                     required: true
                 }
             },
