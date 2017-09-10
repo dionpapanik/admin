@@ -13,15 +13,21 @@ class Auth extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->library('form_validation');
-        $this->load->library('session');
         $this->load->model('authmodel');
     }
 
 
-    /**
-     *
-     */
+    public function testAjax()
+    {
+        if ($this->input->is_ajax_request()) {
+            $email = $this->security->xss_clean($this->input->post('email'));
+            $result = $this->authmodel->isDuplicateUser($email);
+            log_message('debug', 'result: ' . $result);
+        } else {
+            exit('No direct script access allowed');
+        }
+    }
+
     public function index()
     {
         $this->load->view('login');
@@ -32,9 +38,7 @@ class Auth extends CI_Controller
         $this->load->view('register');
     }
 
-    /**
-     *
-     */
+
     public function userLogin()
     {
 

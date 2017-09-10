@@ -97,12 +97,71 @@
 
     <div class="row justify-content-center my-md-4 my-sm-4">
         <div class="col-md-auto col-sm-auto">
-            <p><a href="<?php echo base_url();?>"><i class="fa fa-arrow-left" aria-hidden="true"></i> Already have an account? Go back to login page</a></p>
+            <p><a href="<?php echo base_url(); ?>"><i class="fa fa-arrow-left" aria-hidden="true"></i> Already have an
+                    account? Go back to login page</a></p>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    (function ($) {
+        $(document).ready(function () {
+            $('.register-form').validate({
+                rules: {
+                    name: {
+                        required: true
+                    },
+                    email: {
+                        required: true,
+                        email: true,
+                        remote: {
+                            url: "<?php echo base_url('auth/testAjax');?>",
+                            type: "post",
+                            data: {
+                                email: function () {
+                                    return $("#email").val();
+                                },
+                                csrf_form_protect: function () {
+                                    return $("input[name=csrf_form_protect]").val();
+                                }
+                            }
+                        }
+                    },
+                    password: {
+                        required: true,
+                        minlength: 6
+                    },
+                    verify_password: {
+                        required: true,
+                        minlength: 6,
+                        equalTo: "#password"
+                    }
+                }, messages: {
+                    verify_password: {
+                        equalTo: "Enter the same password as above"
+                    }
+                },
+                highlight: function (element) {
+                    $(element).closest('.form-control').addClass('is-invalid');
+                    $(element).closest('.form-control').removeClass('is-valid');
+                },
+                unhighlight: function (element) {
+                    $(element).closest('.form-control').removeClass('is-invalid');
+                    $(element).closest('.form-control').addClass('is-valid');
+                },
+                errorElement: 'span',
+                errorClass: 'text-danger',
+                errorPlacement: function (error, element) {
+                    if (element.parent('.input-group').length) {
+                        error.insertAfter(element.parent());
+                    } else {
+                        error.insertAfter(element);
+                    }
+                }
+            });
+        });
 
-
+    })(jQuery);
+</script>
 <?php $this->load->view('template/footer'); ?>
 </body>
 </html>
