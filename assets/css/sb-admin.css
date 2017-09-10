@@ -9,6 +9,10 @@ body {
     font-weight: 300;
 }
 
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: 'Jura', sans-serif;
+}
+
 body .dashboard {
     background: #343a40;
 }
@@ -386,11 +390,6 @@ body.sidenav-toggled .navbar-sidenav .nav-link:after {
 
 body.sidenav-toggled .navbar-sidenav-tooltip.show {
     display: flex;
-}
-
-.col-centered {
-    margin: 0 auto;
-    float: none;
 }
 
 .login-button {
