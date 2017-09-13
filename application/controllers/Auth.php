@@ -22,7 +22,8 @@ class Auth extends CI_Controller
         if ($this->input->is_ajax_request()) {
             $email = $this->security->xss_clean($this->input->post('email'));
             $result = $this->authmodel->isDuplicateUser($email);
-            log_message('debug', 'result: ' . $result);
+
+            echo $result;
         } else {
             exit('No direct script access allowed');
         }
@@ -74,10 +75,11 @@ class Auth extends CI_Controller
             $result = $this->authmodel->checkLoginData($email, $password);
             if ($result !== false) {
                 $session_data = array(
-                    'username' => $result
+                    'logged_in' => true,
+                    'id' => $result['id'],
+                    'username' => $result['username']
                 );
-                $this->session->set_userdata('logged_in', $session_data);
-
+                $this->session->set_userdata($session_data);
                 redirect('dashboard');
             } else {
                 $data = array(
@@ -93,7 +95,7 @@ class Auth extends CI_Controller
      */
     public function userLogout()
     {
-        $this->session->unset_userdata('logged_in');
+        $this->session->unset_userdata(array('logged_in', 'id', 'username'));
         redirect(base_url());
     }
 }

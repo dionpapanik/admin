@@ -16,10 +16,11 @@ class AuthModel extends CI_Model
     /**
      * @param $email
      * @param $password
-     * @return bool
+     * @return array|bool
      */
     public function checkLoginData($email, $password)
     {
+        $data = array();
         $checkUsername = $this->db->get_where('users', array('email' => $email));
         if ($checkUsername->num_rows() == 1) { // user exists
             foreach ($checkUsername->result() as $userData) {
@@ -27,7 +28,9 @@ class AuthModel extends CI_Model
                 // log_message('debug', 'checkPassword: ' . $checkPassword);
                 if ($checkPassword == 1) {
                     $this->_updateLoginTime($email);
-                    return $userData->username;
+                    $data['id'] = $userData->id;
+                    $data['username'] = $userData->username;
+                    return $data;
                 }
             }
         }
