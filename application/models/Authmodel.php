@@ -4,7 +4,7 @@
  * Author: Dionisis Papanikolaou
  * Date: 19/8/2017
  */
-class AuthModel extends CI_Model
+class Authmodel extends CI_Model
 {
 
     public function __construct()
