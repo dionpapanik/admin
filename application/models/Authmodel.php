@@ -59,7 +59,7 @@ class Authmodel extends CI_Model
     public function isDuplicateUser($email)
     {
         $checkDuplicateUser = $this->db->get_where('users', array('email' => $email));
-
+        log_message('debug', 'checkDuplicateUser->num_rows: ' . $checkDuplicateUser->num_rows());
         if ($checkDuplicateUser->num_rows() == 1) {
             return true;
         } else {

@@ -11,7 +11,7 @@
     <?php $this->load->view('template/head'); ?>
 </head>
 <body class="<?php echo $_ci_view; ?>-page">
-
+<?php echo  md5(uniqid(microtime().mt_rand(), true)); ?>
 <div class="container">
     <div class="row justify-content-center pt-5">
         <div class="col-md-auto col-sm-auto">

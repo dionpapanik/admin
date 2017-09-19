@@ -13,6 +13,53 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: 'Jura', sans-serif;
 }
 
+a, a:focus, a:hover {
+    text-decoration: none;
+}
+
+.login-page a {
+    color: #cc0000;
+}
+
+.login-page .active, .login-page a:active {
+    color: #a30000;
+}
+
+.login-page a:focus, .login-page a:hover {
+    color: #a30000;
+}
+
+.login-page .divider {
+    border-top: 1px solid #cfd0d2;
+    display: block;
+    line-height: 1px;
+    margin: 15px 0;
+    position: relative;
+    text-align: center;
+}
+
+.login-page .divider .divider-title {
+    background: #ffffff no-repeat;
+    padding: 0 25px;
+    text-transform: uppercase;
+}
+
+
+.login-page .login-button {
+    width: 100%;
+}
+
+.login-page .head {
+    border-bottom: 1px solid #cfd0d2;
+    padding: 25px 0 10px;
+    text-align: center;
+}
+
+.login-page .content {
+    margin: 0 auto;
+    max-width: 400px;
+}
+
 body .dashboard {
     background: #343a40;
 }
@@ -390,8 +437,4 @@ body.sidenav-toggled .navbar-sidenav .nav-link:after {
 
 body.sidenav-toggled .navbar-sidenav-tooltip.show {
     display: flex;
-}
-
-.login-button {
-    width: 100%;
 }

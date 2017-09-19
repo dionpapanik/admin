@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <meta name="description" content="">
 <meta name="author" content="">
-<title>SB Admin - Start Bootstrap Template</title>
+<title>MyService - varelascarservice.gr</title>
 
 <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 <link href="//fonts.googleapis.com/css?family=Jura:400,700&amp;subset=greek" rel="stylesheet">

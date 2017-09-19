@@ -20,10 +20,13 @@ class Auth extends CI_Controller
     public function testAjax()
     {
         if ($this->input->is_ajax_request()) {
-            $email = $this->security->xss_clean($this->input->post('email'));
-            $result = $this->authmodel->isDuplicateUser($email);
-
-            echo $result;
+            $email = $this->security->xss_clean($this->input->post('email', true));
+            $isDuplicate = $this->authmodel->isDuplicateUser($email);
+            if ($isDuplicate) {
+                echo '54353';
+            }else{
+                echo true;
+            }
         } else {
             exit('No direct script access allowed');
         }
