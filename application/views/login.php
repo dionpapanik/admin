@@ -41,7 +41,7 @@
                         'id' => 'password',
                         'name' => 'password',
                         'class' => 'form-control form-control-lg',
-                        'placeholder' => 'Password'
+                        'placeholder' => 'Κωδικός Πρόσβασης'
                     )); ?>
                 </div>
             </div>
@@ -81,6 +81,38 @@
         <?php echo form_close(); ?>
     </div>
 </div>
+<script type="text/javascript">
+    (function ($) {
+        $(document).ready(function () {
+            $('.login-form').validate({
+                rules: {
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    password: {
+                        required: true
+                    }
+                },
+                highlight: function (element) {
+                    $(element).closest('.form-control').addClass('is-invalid');
+                },
+                unhighlight: function (element) {
+                    $(element).closest('.form-control').removeClass('is-invalid');
+                },
+                errorElement: 'span',
+                errorClass: 'text-danger',
+                errorPlacement: function (error, element) {
+                    if (element.parent('.input-group').length) {
+                        error.insertAfter(element.parent());
+                    } else {
+                        error.insertAfter(element);
+                    }
+                }
+            });
+        });
+    })(jQuery);
+</script>
 <?php $this->load->view('template/footer'); ?>
 </body>
 </html>

@@ -45,14 +45,13 @@ class Auth extends CI_Controller
 
     public function userLogin()
     {
-
         $validation = array(
             array(
                 'field' => 'email',
                 'label' => 'E-mail',
                 'rules' => 'trim|required|xss_clean',
                 'errors' => array(
-                    'required' => 'Please Insert %s.',
+                    'required' => 'Παρακαλώ εισάγετε %s.',
                 ),
             ),
             array(
@@ -60,7 +59,7 @@ class Auth extends CI_Controller
                 'label' => 'Password',
                 'rules' => 'trim|required|xss_clean',
                 'errors' => array(
-                    'required' => 'Please Insert %s.',
+                    'required' => 'Παρακαλώ εισάγετε %s.',
                 ),
             )
         );
@@ -86,7 +85,7 @@ class Auth extends CI_Controller
                 redirect('dashboard');
             } else {
                 $data = array(
-                    'invalid_data' => 'Invalid Username or Password'
+                    'invalid_data' => 'Μη έγκυρα στοιχεία πρόσβασης'
                 );
                 $this->load->view('login', $data);
             }
