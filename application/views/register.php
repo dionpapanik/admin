@@ -11,7 +11,7 @@
     <?php $this->load->view('template/head'); ?>
 </head>
 <body class="<?php echo $_ci_view; ?>-page">
-<?php echo  md5(uniqid(microtime().mt_rand(), true)); ?>
+<?php echo md5(uniqid(microtime() . mt_rand(), true)); ?>
 <div class="container">
     <div class="row justify-content-center pt-5">
         <div class="col-md-auto col-sm-auto">
@@ -114,7 +114,7 @@
                         required: true,
                         email: true,
                         remote: {
-                            url: "<?php echo base_url('auth/testAjax');?>",
+                            url: "<?php echo base_url('auth/isEmailAvailable');?>",
                             type: "post",
                             data: {
                                 email: function () {
@@ -136,6 +136,9 @@
                         equalTo: "#password"
                     }
                 }, messages: {
+                    email: {
+                        remote: jQuery.validator.format("{0} already exists")
+                    },
                     verify_password: {
                         equalTo: "Enter the same password as above"
                     }
