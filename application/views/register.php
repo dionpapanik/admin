@@ -110,7 +110,7 @@
     </div>
 </div>
 
-<?php echo md5(uniqid(microtime() . mt_rand(), true)); ?>
+<?php // echo md5(uniqid(microtime() . mt_rand(), true)); ?>
 
 <script type="text/javascript">
     (function ($) {

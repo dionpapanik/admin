@@ -6,7 +6,8 @@
 ?>
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="<?php base_url('dashboard') ?>">Welcome <?php echo $username ?></a>
+    <a class="navbar-brand"
+       href="<?php base_url('dashboard') ?>">Καλωσήλθες <?php echo $this->session->userdata['username'] ?></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -14,32 +15,36 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav">
-            <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-fw fa-dashboard"></i>
-                    <span class="nav-link-text">
-Dashboard</span>
-                </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+            <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Πίνακας Ελέγχου">
                 <a class="nav-link" href="#">
                     <i class="fa fa-fw fa-area-chart"></i>
                     <span class="nav-link-text">
-Charts</span>
+                        Πίνακας Ελέγχου
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Ο Λογαριασμός μου">
+                <a class="nav-link" href="#">
+                    <i class="fa fa-fw fa-user-o"></i>
+                    <span class="nav-link-text">
+                        Ο Λογαριασμός μου
+                    </span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
                 <a class="nav-link" href="#">
                     <i class="fa fa-fw fa-table"></i>
                     <span class="nav-link-text">
-Tables</span>
+                        Tables
+                    </span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents">
                     <i class="fa fa-fw fa-wrench"></i>
                     <span class="nav-link-text">
-Components</span>
+                        Components
+                    </span>
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseComponents">
                     <li>
