@@ -4,6 +4,7 @@
 <head>
     <?php $this->load->view('template/head'); ?>
 </head>
+
 <body class="<?php echo $_ci_view; ?>-page">
 <div class="head mb-md-5 mb-sm-5">
     <a href="<?php echo base_url(); ?>">
@@ -55,7 +56,7 @@
                 <?php echo form_submit(array('id' => 'submit', 'class' => 'btn btn-lg btn-success login-button', 'value' => 'Σύνδεση')); ?>
             </div>
         </div>
-        <div class="row mt-md-2 mt-sm-2">
+        <div class="row mt-md-3 mt-sm-3">
             <div class="col-md-12">
                 <div class="divider">
                     <strong class="divider-title">η</strong>

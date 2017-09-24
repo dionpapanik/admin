@@ -17,19 +17,19 @@ a, a:focus, a:hover {
     text-decoration: none;
 }
 
-.login-page a, .register-page a {
+a {
     color: #cc0000;
 }
 
-.login-page .active, .login-page a:active, .register-page .active, .register-page a:active {
+a:active {
     color: #a30000;
 }
 
-.login-page a:focus, .login-page a:hover, .register-page a:focus, .register-page a:hover {
+a:hover {
     color: #a30000;
 }
 
-.login-page .divider, .register-page .divider {
+.divider {
     border-top: 1px solid #cfd0d2;
     display: block;
     line-height: 1px;
@@ -38,7 +38,7 @@ a, a:focus, a:hover {
     text-align: center;
 }
 
-.login-page .divider .divider-title, .register-page .divider .divider-title {
+.divider .divider-title {
     background: #ffffff no-repeat;
     padding: 0 25px;
     text-transform: uppercase;
@@ -49,13 +49,13 @@ a, a:focus, a:hover {
     border-radius: 30px;
 }
 
-.login-page .head, .register-page .head {
+.head {
     border-bottom: 1px solid #cfd0d2;
     padding: 25px 0 10px;
     text-align: center;
 }
 
-.login-page .content, .register-page .content {
+.content {
     margin: 0 auto;
     max-width: 400px;
 }

@@ -200,8 +200,8 @@ Menu Levels</span>
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-                    <i class="fa fa-fw fa-sign-out"></i>
-                    Logout</a>
+                    Αποσύνδεση <i class="fa fa-fw fa-sign-out"></i>
+                </a>
             </li>
         </ul>
     </div>
@@ -213,17 +213,14 @@ Menu Levels</span>
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Θέλετε να αποσυνδεθείτε?</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                Select "Logout" below if you are ready to end your current session.
-            </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="<?php echo base_url('auth/userLogout') ?>">Logout</a>
+                <a class="btn btn-primary" href="<?php echo base_url('auth/userLogout') ?>">Αποσύνδεση</a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Ακύρωση</button>
             </div>
         </div>
     </div>

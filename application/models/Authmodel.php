@@ -21,9 +21,9 @@ class Authmodel extends CI_Model
     public function checkLoginData($email, $password)
     {
         $data = array();
-        $checkUsername = $this->db->get_where('users', array('email' => $email));
-        if ($checkUsername->num_rows() == 1) { // user exists
-            foreach ($checkUsername->result() as $userData) {
+        $checkEmail = $this->db->get_where('users', array('email' => $email));
+        if ($checkEmail->num_rows() == 1) { // user exists
+            foreach ($checkEmail->result() as $userData) {
                 $checkPassword = password_verify($password, $userData->password);
                 // log_message('debug', 'checkPassword: ' . $checkPassword);
                 if ($checkPassword == 1) {
@@ -52,17 +52,31 @@ class Authmodel extends CI_Model
 
 
     /**
+     * checks if the provided email exists in database
      * @param $email
      * @return bool
      */
 
     public function isDuplicateMail($email)
     {
-        $checkDuplicateMail = $this->db->get_where('users', array('email' => $email));
-        if ($checkDuplicateMail->num_rows() == 1) {
-            return true;
-        } else {
-            return false;
-        }
+        return $this->db->limit(1)->get_where('users', array('email' => $email))->num_rows() === 1
+            ? true
+            : false;
     }
+
+    public function registerNewUser($name, $email, $pass)
+    {
+        $hashedPass = password_hash($pass, PASSWORD_DEFAULT);
+        $userData = array(
+            'username' => $name,
+            'email' => $email,
+            'password' => $hashedPass,
+        );
+
+        $this->db->insert('users', $userData);
+        return ($this->db->affected_rows() !== 1)
+            ? false
+            : true;
+    }
+
 }

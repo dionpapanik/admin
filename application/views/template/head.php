@@ -5,14 +5,18 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-<meta name="description" content="">
-<meta name="author" content="">
 <title>MyService - varelascarservice.gr</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+<meta name="HandheldFriendly" content="true"/>
+<meta name="apple-touch-fullscreen" content="yes"/>
+<meta name="robots" content="index,follow" />
+<link rel="icon" href="<?php echo get_image_url('favicon.ico') ?>" type="image/x-icon" />
+<link rel="shortcut icon" href="<?php echo get_image_url('favicon.ico') ?>" type="image/x-icon" />
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<meta name="author" content=""/>
 
 <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 <link href="//fonts.googleapis.com/css?family=Jura:400,700&amp;subset=greek" rel="stylesheet">

@@ -10,9 +10,8 @@
 <head>
     <?php $this->load->view('template/head'); ?>
 </head>
+
 <body class="<?php echo $_ci_view; ?>-page">
-
-
 <div class="head mb-md-5 mb-sm-5">
     <a href="<?php echo base_url(); ?>">
         <img src="<?php echo get_image_url('logo.png') ?>">
@@ -26,7 +25,7 @@
                 <h4>Δημιουργήστε ένα νέο λογαριασμό!</h4>
             </div>
         </div>
-        <?php echo form_open('auth/userRegistration', array('class' => 'register-form')); ?>
+        <?php echo form_open('auth/newUserRegistration', array('class' => 'register-form')); ?>
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
@@ -51,7 +50,7 @@
                             'class' => 'form-control form-control-lg',
                             'placeholder' => 'E-mail'
                         ),
-                        set_value('username')); ?>
+                        set_value('email')); ?>
                 </div>
             </div>
         </div>
@@ -87,10 +86,10 @@
                 <?php if (isset($invalid_data)) : ?>
                     <div class="alert alert-danger"><?php echo $invalid_data; ?></div>
                 <?php endif; ?>
-                <?php echo form_submit(array('id' => 'submit', 'class' => 'btn btn-lg btn-success login-button', 'value' => 'Σύνδεση')); ?>
+                <?php echo form_submit(array('id' => 'submit', 'class' => 'btn btn-lg btn-success login-button', 'value' => 'Εγγραφή')); ?>
             </div>
         </div>
-        <div class="row mt-md-2 mt-sm-2">
+        <div class="row mt-md-3 mt-sm-3">
             <div class="col-md-12">
                 <div class="divider">
                     <strong class="divider-title">η</strong>
@@ -155,11 +154,9 @@
                 },
                 highlight: function (element) {
                     $(element).closest('.form-control').addClass('is-invalid');
-                    $(element).closest('.form-control').removeClass('is-valid');
                 },
                 unhighlight: function (element) {
                     $(element).closest('.form-control').removeClass('is-invalid');
-                    $(element).closest('.form-control').addClass('is-valid');
                 },
                 errorElement: 'span',
                 errorClass: 'text-danger',
