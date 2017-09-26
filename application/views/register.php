@@ -92,7 +92,7 @@
         <div class="row mt-md-3 mt-sm-3">
             <div class="col-md-12">
                 <div class="divider">
-                    <strong class="divider-title">η</strong>
+                    <span class="divider-title">η</span>
                 </div>
             </div>
         </div>

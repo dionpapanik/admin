@@ -7,7 +7,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand"
-       href="<?php base_url('dashboard') ?>">Καλωσήλθες <?php echo $this->session->userdata['username'] ?></a>
+       href="<?php base_url('dashboard') ?>">Καλωσήλθες, <?php echo $this->session->userdata['username'] ?> !</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -15,27 +15,20 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav">
-            <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Πίνακας Ελέγχου">
-                <a class="nav-link" href="#">
+            <li class="nav-item <?php echo (get_active_menu('dashboard')) ?  "active" : '' ?>" data-toggle="tooltip"
+                data-placement="right" title="Πίνακας Ελέγχου">
+                <a class="nav-link" href="<?php echo base_url('dashboard') ?>">
                     <i class="fa fa-fw fa-area-chart"></i>
                     <span class="nav-link-text">
                         Πίνακας Ελέγχου
                     </span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Ο Λογαριασμός μου">
-                <a class="nav-link" href="#">
+            <li class="nav-item <?php echo (get_active_menu('account')) ?  "active" : '' ?>" data-toggle="tooltip" data-placement="right" title="Ο Λογαριασμός μου">
+                <a class="nav-link" href="<?php echo base_url('account') ?>">
                     <i class="fa fa-fw fa-user-o"></i>
                     <span class="nav-link-text">
                         Ο Λογαριασμός μου
-                    </span>
-                </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-fw fa-table"></i>
-                    <span class="nav-link-text">
-                        Tables
                     </span>
                 </a>
             </li>
@@ -43,48 +36,21 @@
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents">
                     <i class="fa fa-fw fa-wrench"></i>
                     <span class="nav-link-text">
-                        Components
+                        Τα Οχήματά μου
                     </span>
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseComponents">
                     <li>
-                        <a href="#">Static Navigation</a>
+                        <a href="#">Πρώτο</a>
                     </li>
                     <li>
-                        <a href="#">Custom Card Examples</a>
+                        <a href="#">Δεύτερο</a>
                     </li>
                     <li>
-                        <a href="#">Blank Page</a>
+                        <a href="#">Χιλιοστό</a>
                     </li>
                     <li>
-                        <a href="#">Login Page</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti">
-                    <i class="fa fa-fw fa-sitemap"></i>
-                    <span class="nav-link-text">
-Menu Levels</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseMulti">
-                    <li>
-                        <a href="#">Second Level Item</a>
-                    </li>
-                    <li>
-                        <a href="#">Second Level Item</a>
-                    </li>
-                    <li>
-                        <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third
-                            Level</a>
-                        <ul class="sidenav-third-level collapse" id="collapseMulti2">
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
-                        </ul>
+                        <a href="#">Προσθήκη Οχήματος</a>
                     </li>
                 </ul>
             </li>

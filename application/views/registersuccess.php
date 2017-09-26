@@ -28,7 +28,7 @@
         <div class="row">
             <div class="col-md-12 text-center">
                 <h4>Ο λογαριασμός σας δημιουργήθηκε επιτυχώς!</h4>
-                <h4>E-mail σύνδεσης: <?php echo $email ?> </h4>
+                <p class="mt-md-3">Χρησιμοποιήστε το e-mail <?php echo $email ?> για να συνδεθείτε και το κωδικό που μόλις καταχωρίσατε. </p>
             </div>
         </div>
         <div class="row">

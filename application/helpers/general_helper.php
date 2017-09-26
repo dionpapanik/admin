@@ -15,6 +15,18 @@ if (!function_exists('get_image_url')) {
 }
 
 
+if (!function_exists('get_active_menu')) {
+    function get_active_menu($term)
+    {
+        $CI = get_instance();
+        $controller = $CI->router->fetch_class();
+        return ($controller == $term)
+            ? true
+            : false;
+    }
+}
+
+
 /**
  * Debug helper function.  This is a wrapper for var_dump() that adds
  * the <pre /> tags, cleans up newlines and indents, and runs

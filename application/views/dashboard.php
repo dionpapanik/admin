@@ -20,15 +20,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 <div class="content-wrapper py-3">
-
     <div class="container-fluid">
-
         <!-- Breadcrumbs -->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="#">Dashboard</a>
+                <a href="#">Πίνακας Ελέγχου</a>
             </li>
-            <li class="breadcrumb-item active">My Dashboard</li>
+            <!--<li class="breadcrumb-item active">My Dashboard</li>-->
         </ol>
 
         <!-- Icon Cards -->
