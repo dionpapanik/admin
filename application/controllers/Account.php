@@ -10,16 +10,17 @@ class Account extends CI_Controller
     {
         parent::__construct();
         $this->load->library('form_validation');
+        $this->load->model('accountmodel');
     }
 
     public function index()
     {
         if (isset($this->session->userdata['logged_in'])) {
-            $this->load->view('account');
+            $userId = $this->session->userdata['id'];
+            $userData = $this->accountmodel->getUserData($userId);
+            $this->load->view('account', $userData);
         } else {
-            $data = array(
-                'invalid_data' => 'Πραγματοποιήστε είσοδο πρώτα!'
-            );
+            $data['invalid_data'] = 'Πραγματοποιήστε είσοδο πρώτα!';
             $this->load->view('login', $data);
         }
     }

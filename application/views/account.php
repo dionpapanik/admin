@@ -27,6 +27,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!--<li class="breadcrumb-item active">My Dashboard</li>-->
         </ol>
 
+
+        <?php dump($username); ?>
+        <?php dump($email); ?>
+        <?php dump($address, 'address'); ?>
+        <?php dump($phone, 'phone'); ?>
+        <?php dump($last_login, 'last_login'); ?>
+
     </div>
     <!-- /.container-fluid -->
 </div>
