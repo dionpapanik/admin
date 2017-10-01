@@ -57,8 +57,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <?php echo form_input(array(
-                        'type' => 'password',
+                    <?php echo form_password(array(
                         'id' => 'password',
                         'name' => 'password',
                         'class' => 'form-control form-control-lg',
@@ -70,8 +69,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <?php echo form_input(array(
-                        'type' => 'password',
+                    <?php echo form_password(array(
                         'id' => 'verify_password',
                         'name' => 'verify_password',
                         'class' => 'form-control form-control-lg',

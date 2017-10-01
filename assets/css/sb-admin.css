@@ -49,6 +49,20 @@ a:hover {
     border-radius: 30px;
 }
 
+.custom-control-input:checked ~ .custom-control-indicator {
+    color: #fff;
+    background-color: #28a745;
+}
+
+.custom-control-input:focus ~ .custom-control-indicator {
+    box-shadow: none;
+}
+
+.custom-control-input:active ~ .custom-control-indicator {
+    color: #fff;
+    background-color: rgba(40, 167, 69, 0.60);
+}
+
 .head {
     border-bottom: 1px solid #cfd0d2;
     padding: 25px 0 10px;

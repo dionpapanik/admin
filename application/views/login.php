@@ -49,6 +49,14 @@
         </div>
         <div class="row">
             <div class="col-md-12">
+                <p class="text-center">
+                    <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                        <input type="checkbox" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Απομνημόνευση στοιχείων</span>
+                    </label>
+                </p>
+
                 <?php echo validation_errors(); ?>
                 <?php if (isset($invalid_data)) : ?>
                     <div class="alert alert-danger"><?php echo $invalid_data; ?></div>
@@ -59,7 +67,7 @@
         <div class="row mt-md-3 mt-sm-3">
             <div class="col-md-12">
                 <div class="divider">
-                    <strong class="divider-title">η</strong>
+                    <span class="divider-title">η</span>
                 </div>
             </div>
         </div>
