@@ -27,7 +27,7 @@ class Authmodel extends CI_Model
                 $checkPassword = password_verify($password, $userData->password);
                 // log_message('debug', 'checkPassword: ' . $checkPassword);
                 if ($checkPassword == 1) {
-                    $this->_updateLoginTime($email);
+                    $this->_updateLoginData($email);
                     $data['id'] = $userData->id;
                     $data['username'] = $userData->username;
                     return $data;
@@ -40,13 +40,18 @@ class Authmodel extends CI_Model
     /**
      * @param $email
      */
-    private function _updateLoginTime($email)
+    private function _updateLoginData($email)
     {
         $loginTime = new DateTime();
         $loginTime->setTimezone(new DateTimezone('Europe/Athens'));
 
         $this->db->where('email', $email);
-        $this->db->update('users', array('last_login' => $loginTime->format('d-m-Y H:i:s')));
+        $this->db->update(
+            'users', array(
+                'last_login' => $loginTime->format('d-m-Y H:i'),
+                'remote_addr' => $this->input->ip_address()
+            )
+        );
         return;
     }
 

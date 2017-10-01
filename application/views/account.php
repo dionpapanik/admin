@@ -41,14 +41,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 'id' => 'name',
                                 'name' => 'name',
                                 'class' => 'form-control',
-                                'readonly' => true,
+                                'disabled' => 'disabled',
                                 'placeholder' => 'Όνομα'
                             ),
                             set_value('name', $username)); ?>
                     </div>
                     <div class="col-sm-2">
-                        <i class="fa fa-edit"></i>
-                        Επεξεργασία
+                        <a href="javascript:void(0);" id="edit-name" onclick="toggleValueElements(this.id)">
+                            <i class="fa fa-edit"></i><span>Επεξεργασία</span>
+                        </a>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -58,15 +59,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             array(
                                 'id' => 'email',
                                 'name' => 'email',
-                                'class' => 'form-control',
+                                'class' => 'form-control-plaintext',
                                 'readonly' => true,
                                 'placeholder' => 'E-mail'
                             ),
                             set_value('email', $email)); ?>
-                    </div>
-                    <div class="col-sm-2">
-                        <i class="fa fa-edit"></i>
-                        Επεξεργασία
                     </div>
                 </div>
                 <div class="form-group row">
@@ -77,14 +74,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 'id' => 'address',
                                 'name' => 'address',
                                 'class' => 'form-control',
-                                'readonly' => true,
+                                'disabled' => 'disabled',
                                 'placeholder' => 'Διεύθυνση'
                             ),
                             set_value('address', $address)); ?>
                     </div>
                     <div class="col-sm-2">
-                        <i class="fa fa-edit"></i>
-                        Επεξεργασία
+                        <a href="javascript:void(0);" id="edit-address" onclick="toggleValueElements(this.id)">
+                            <i class="fa fa-edit"></i><span>Επεξεργασία</span>
+                        </a>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -95,14 +93,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 'id' => 'phone',
                                 'name' => 'phone',
                                 'class' => 'form-control',
-                                'readonly' => true,
+                                'disabled' => 'disabled',
                                 'placeholder' => 'Τηλέφωνο'
                             ),
                             set_value('phone', $phone)); ?>
                     </div>
                     <div class="col-sm-2">
-                        <i class="fa fa-edit"></i>
-                        Επεξεργασία
+                        <a href="javascript:void(0);" id="edit-phone" onclick="toggleValueElements(this.id)">
+                            <i class="fa fa-edit"></i><span>Επεξεργασία</span>
+                        </a>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -113,14 +112,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 'id' => 'password',
                                 'name' => 'password',
                                 'class' => 'form-control',
-                                'readonly' => true,
+                                'disabled' => 'disabled',
                                 'placeholder' => 'Κωδικός Πρόσβασης'
                             ),
                             set_value('password')); ?>
                     </div>
                     <div class="col-sm-2">
-                        <i class="fa fa-edit"></i>
-                        Επεξεργασία
+                        <a href="javascript:void(0);" id="edit-password" onclick="toggleValueElements(this.id)">
+                            <i class="fa fa-edit"></i><span>Επεξεργασία</span>
+                        </a>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -130,15 +130,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             array(
                                 'id' => 'last-login',
                                 'name' => 'last-login',
-                                'class' => 'form-control',
+                                'class' => 'form-control-plaintext',
                                 'readonly' => true,
                                 'placeholder' => 'Τελευταία Σύνδεση'
                             ),
                             set_value('password', $last_login)); ?>
                     </div>
-                    <div class="col-sm-2">
-                        <i class="fa fa-edit"></i>
-                        Επεξεργασία
+                </div>
+                <div class="row text-center">
+                    <div class="col-sm-12">
+                        <?php echo form_submit(array(
+                            'id' => 'submit',
+                            'class' => 'btn btn-success',
+                            'disabled' => 'disabled',
+                            'value' => 'Ενημέρωση Λογαριασμού'
+                        )); ?>
                     </div>
                 </div>
                 <?php echo form_close(); ?>
@@ -147,7 +153,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 Updated yesterday at 11:59 PM
             </div>
         </div>
-        <?php dump($this->input->ip_address()) ?>
     </div>
     <!-- /.container-fluid -->
 </div>
@@ -156,6 +161,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <a class="scroll-to-top rounded" href="#page-top">
     <i class="fa fa-angle-up"></i>
 </a>
+
+<script type="text/javascript">
+    function toggleValueElements(editId) {
+        var ret = editId.replace('edit-', '#');
+        (function ($) {
+            $(ret).prop('disabled', function (i, v) {
+                if (v) {
+                    $("#submit").prop('disabled', false);
+                }else {
+                    $("#submit").prop('disabled', true);
+                }
+                return !v;
+            });
+        })(jQuery);
+    }
+</script>
 
 
 <?php $this->load->view('template/footer'); ?>
