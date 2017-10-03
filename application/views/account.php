@@ -47,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             set_value('name', $username)); ?>
                     </div>
                     <div class="col-sm-2">
-                        <a href="javascript:void(0);" id="edit-name" onclick="toggleValueElements(this.id)">
+                        <a href="javascript:void(0);" id="edit-name" onclick="toggleInput(this.id)">
                             <i class="fa fa-edit"></i><span>Επεξεργασία</span>
                         </a>
                     </div>
@@ -80,7 +80,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             set_value('address', $address)); ?>
                     </div>
                     <div class="col-sm-2">
-                        <a href="javascript:void(0);" id="edit-address" onclick="toggleValueElements(this.id)">
+                        <a href="javascript:void(0);" id="edit-address" onclick="toggleInput(this.id)">
                             <i class="fa fa-edit"></i><span>Επεξεργασία</span>
                         </a>
                     </div>
@@ -99,7 +99,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             set_value('phone', $phone)); ?>
                     </div>
                     <div class="col-sm-2">
-                        <a href="javascript:void(0);" id="edit-phone" onclick="toggleValueElements(this.id)">
+                        <a href="javascript:void(0);" id="edit-phone" onclick="toggleInput(this.id)">
                             <i class="fa fa-edit"></i><span>Επεξεργασία</span>
                         </a>
                     </div>
@@ -107,7 +107,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="form-group row">
                     <label for="password" class="col-sm-2 col-form-label">Κωδικός Πρόσβασης</label>
                     <div class="col-sm-8">
-                        <?php echo form_input(
+                        <?php echo form_password(
                             array(
                                 'id' => 'password',
                                 'name' => 'password',
@@ -118,7 +118,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             set_value('password')); ?>
                     </div>
                     <div class="col-sm-2">
-                        <a href="javascript:void(0);" id="edit-password" onclick="toggleValueElements(this.id)">
+                        <a href="javascript:void(0);" id="edit-password" onclick="toggleInput(this.id)">
                             <i class="fa fa-edit"></i><span>Επεξεργασία</span>
                         </a>
                     </div>
@@ -139,6 +139,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
                 <div class="row text-center">
                     <div class="col-sm-12">
+                        <?php echo validation_errors(); ?>
                         <?php echo form_submit(array(
                             'id' => 'submit',
                             'class' => 'btn btn-success',
@@ -150,7 +151,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <?php echo form_close(); ?>
             </div>
             <div class="card-footer small text-muted">
-                Updated yesterday at 11:59 PM
+                Τελευταία ενημέρωση <?php echo $last_update; ?>
             </div>
         </div>
     </div>
@@ -163,19 +164,58 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </a>
 
 <script type="text/javascript">
-    function toggleValueElements(editId) {
+    function toggleInput(editId) {
         var ret = editId.replace('edit-', '#');
         (function ($) {
             $(ret).prop('disabled', function (i, v) {
                 if (v) {
                     $("#submit").prop('disabled', false);
-                }else {
+                } else {
                     $("#submit").prop('disabled', true);
                 }
                 return !v;
             });
         })(jQuery);
     }
+
+
+    (function ($) {
+        $(document).ready(function () {
+            $('.edit-account').validate({
+                rules: {
+                    name: {
+                        required: true
+                    },
+                    address: {
+                        required: true
+                    },
+                    phone: {
+                        required: true
+                    },
+                    password: {
+                        required: true,
+                        minlength: 6
+                    }
+                },
+                highlight: function (element) {
+                    $(element).closest('.form-control').addClass('is-invalid');
+                },
+                unhighlight: function (element) {
+                    $(element).closest('.form-control').removeClass('is-invalid');
+                },
+                errorElement: 'span',
+                errorClass: 'text-danger',
+                errorPlacement: function (error, element) {
+                    if (element.parent('.input-group').length) {
+                        error.insertAfter(element.parent());
+                    } else {
+                        error.insertAfter(element);
+                    }
+                }
+            });
+        });
+
+    })(jQuery);
 </script>
 
 

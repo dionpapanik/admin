@@ -42,16 +42,11 @@ class Authmodel extends CI_Model
      */
     private function _updateLoginData($email)
     {
-        $loginTime = new DateTime();
-        $loginTime->setTimezone(new DateTimezone('Europe/Athens'));
-
-        $this->db->where('email', $email);
-        $this->db->update(
-            'users', array(
-                'last_login' => $loginTime->format('d-m-Y H:i'),
-                'remote_addr' => $this->input->ip_address()
-            )
+        $newData = array(
+            'last_login' => getCurrentDateTime(),
+            'remote_addr' => $this->input->ip_address()
         );
+        $this->db->update('users', $newData, array('email' => $email));
         return;
     }
 
@@ -76,6 +71,7 @@ class Authmodel extends CI_Model
             'username' => $name,
             'email' => $email,
             'password' => $hashedPass,
+            'last_update' => getCurrentDateTime('date')
         );
 
         $this->db->insert('users', $userData);

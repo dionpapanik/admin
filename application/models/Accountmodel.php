@@ -22,7 +22,28 @@ class Accountmodel extends CI_Model
             $data['address'] = $userData->address;
             $data['phone'] = $userData->phone;
             $data['last_login'] = $userData->last_login;
+            $data['last_update'] = $userData->last_update;
         }
         return $data;
+    }
+
+
+    public function updateUserData($userId, $username, $address, $phone, $password)
+    {
+        $newData = array();
+        if (!empty($username)) {
+            $newData['username'] = $username;
+        }
+        if (!empty($address)) {
+            $newData['address'] = $address;
+        }
+        if (!empty($phone)) {
+            $newData['phone'] = $phone;
+        }
+        if (!empty($password)) {
+            $newData['password'] = password_hash($password, PASSWORD_DEFAULT);
+        }
+        $newData['last_update'] = getCurrentDateTime('date');
+        $this->db->update('users', $newData, array('id' => $userId));
     }
 }
