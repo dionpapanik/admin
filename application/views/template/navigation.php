@@ -49,8 +49,8 @@
                     <li>
                         <a href="#">Χιλιοστό</a>
                     </li>
-                    <li>
-                        <a href="#">Προσθήκη Οχήματος</a>
+                    <li class="<?php echo (get_active_menu('car')) ?  "active" : '' ?>">
+                        <a href="<?php echo base_url('car') ?>">Προσθήκη Οχήματος</a>
                     </li>
                 </ul>
             </li>

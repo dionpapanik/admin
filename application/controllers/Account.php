@@ -9,20 +9,18 @@ class Account extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->library('form_validation');
         $this->load->model('accountmodel');
+        if (!isset($this->session->userdata['logged_in'])) {
+            $this->session->set_flashdata('auth_error', 'Συνδεθείτε στο λογαριασμό σας!');
+            redirect(base_url());
+        }
     }
 
     public function index()
     {
-        if (isset($this->session->userdata['logged_in'])) {
-            $userId = $this->session->userdata['id'];
-            $userData = $this->accountmodel->getUserData($userId);
-            $this->load->view('account', $userData);
-        } else {
-            $data['invalid_data'] = 'Πραγματοποιήστε είσοδο πρώτα!';
-            $this->load->view('login', $data);
-        }
+        $userId = $this->session->userdata['id'];
+        $userData = $this->accountmodel->getUserData($userId);
+        $this->load->view('account', $userData);
     }
 
     public function edit()
@@ -64,6 +62,7 @@ class Account extends CI_Controller
             $this->accountmodel->updateUserData($userId, $username, $address, $phone, $password);
 
             $userData = $this->accountmodel->getUserData($userId);
+            $this->session->set_flashdata('update_user_data_success', 'Τα στοιχεία σας ενημερώθηκαν επιτυχώς!');
             $this->load->view('account', $userData);
         }
     }

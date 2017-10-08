@@ -26,6 +26,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </li>
             <!--<li class="breadcrumb-item active">My Dashboard</li>-->
         </ol>
+
+
+
         <div class="card mb-3">
             <div class="card-header">
                 <i class="fa fa-fw fa-user-o"></i>
@@ -134,12 +137,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 'readonly' => true,
                                 'placeholder' => 'Τελευταία Σύνδεση'
                             ),
-                            set_value('password', $last_login)); ?>
+                            set_value('last-login', $last_login)); ?>
                     </div>
                 </div>
                 <div class="row text-center">
                     <div class="col-sm-12">
                         <?php echo validation_errors(); ?>
+
+                        <?php if ($this->session->flashdata('update_user_data_success')): ?>
+                            <div class="alert alert-success">
+                                <?php echo $this->session->flashdata('update_user_data_success'); ?>
+                            </div>
+                        <?php endif; ?>
+
                         <?php echo form_submit(array(
                             'id' => 'submit',
                             'class' => 'btn btn-success',
@@ -165,57 +175,54 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <script type="text/javascript">
     function toggleInput(editId) {
-        var ret = editId.replace('edit-', '#');
-        (function ($) {
-            $(ret).prop('disabled', function (i, v) {
-                if (v) {
-                    $("#submit").prop('disabled', false);
-                } else {
-                    $("#submit").prop('disabled', true);
-                }
-                return !v;
-            });
-        })(jQuery);
+        var inputId = editId.replace('edit-', '#');
+        jQuery(inputId).prop('disabled', function (i, v) {
+            if (v) {
+                jQuery("#submit").prop('disabled', false);
+            } else {
+                jQuery("#submit").prop('disabled', true);
+                jQuery(inputId).removeClass('is-invalid');
+            }
+            return !v;
+        });
     }
 
-
-    (function ($) {
-        $(document).ready(function () {
-            $('.edit-account').validate({
-                rules: {
-                    name: {
-                        required: true
-                    },
-                    address: {
-                        required: true
-                    },
-                    phone: {
-                        required: true
-                    },
-                    password: {
-                        required: true,
-                        minlength: 6
-                    }
+    jQuery(document).ready(function () {
+        jQuery('.edit-account').validate({
+            rules: {
+                name: {
+                    required: true
                 },
-                highlight: function (element) {
-                    $(element).closest('.form-control').addClass('is-invalid');
+                address: {
+                    required: true
                 },
-                unhighlight: function (element) {
-                    $(element).closest('.form-control').removeClass('is-invalid');
+                phone: {
+                    required: true,
+                    number: true
                 },
-                errorElement: 'span',
-                errorClass: 'text-danger',
-                errorPlacement: function (error, element) {
-                    if (element.parent('.input-group').length) {
-                        error.insertAfter(element.parent());
-                    } else {
-                        error.insertAfter(element);
-                    }
+                password: {
+                    required: true,
+                    minlength: 6
                 }
-            });
+            },
+            highlight: function (element) {
+                jQuery(element).closest('.form-control').addClass('is-invalid');
+            },
+            unhighlight: function (element) {
+                jQuery(element).closest('.form-control').removeClass('is-invalid');
+            },
+            errorElement: 'span',
+            errorClass: 'text-danger',
+            errorPlacement: function (error, element) {
+                if (element.parent('.input-group').length) {
+                    error.insertAfter(element.parent());
+                } else {
+                    error.insertAfter(element);
+                }
+            }
         });
+    });
 
-    })(jQuery);
 </script>
 
 

@@ -58,8 +58,10 @@
                 </p>
 
                 <?php echo validation_errors(); ?>
-                <?php if (isset($invalid_data)) : ?>
-                    <div class="alert alert-danger"><?php echo $invalid_data; ?></div>
+                <?php if ($this->session->flashdata('auth_error')): ?>
+                    <div class="alert alert-danger">
+                        <?php echo $this->session->flashdata('auth_error'); ?>
+                    </div>
                 <?php endif; ?>
                 <?php echo form_submit(array('id' => 'submit', 'class' => 'btn btn-lg btn-success login-button', 'value' => 'Σύνδεση')); ?>
             </div>

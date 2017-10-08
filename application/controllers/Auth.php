@@ -14,7 +14,6 @@ class Auth extends CI_Controller
     {
         parent::__construct();
         $this->load->model('authmodel');
-        $this->load->library('form_validation');
     }
 
 

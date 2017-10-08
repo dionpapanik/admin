@@ -1,11 +1,15 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+/**
+ * Author: Dionisis Papanikolaou
+ * Date: 8/10/2017
+ */
 
-class Dashboard extends CI_Controller
+class Car extends CI_Controller
 {
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('accountmodel');
         if (!isset($this->session->userdata['logged_in'])) {
             $this->session->set_flashdata('auth_error', 'Συνδεθείτε στο λογαριασμό σας!');
             redirect(base_url());
@@ -14,6 +18,7 @@ class Dashboard extends CI_Controller
 
     public function index()
     {
-        $this->load->view('dashboard');
+        $this->load->view('addcar');
     }
+
 }
