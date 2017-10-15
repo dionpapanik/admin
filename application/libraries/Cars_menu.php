@@ -4,7 +4,7 @@
  * Date: 15/10/2017
  */
 
-class Cars_Menu
+class Cars_menu
 {
     private $_ci;
 
