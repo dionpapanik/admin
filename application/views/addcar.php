@@ -92,7 +92,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="form-group row">
                     <label for="password" class="col-sm-2 col-form-label">Χιλιόμετρα</label>
                     <div class="col-sm-8">
-                        <?php echo form_password(
+                        <?php echo form_input(
                             array(
                                 'id' => 'mileage',
                                 'name' => 'mileage',
@@ -106,8 +106,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="col-sm-8">
                         <?php echo form_input(
                             array(
-                                'id' => 'last-login',
-                                'name' => 'last-login',
+                                'id' => 'registered-date',
+                                'name' => 'registered-date',
                                 'class' => 'form-control',
                                 'placeholder' => 'Χρονολογία Αγοράς'
                             )); ?>
@@ -144,6 +144,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <script type="text/javascript">
     jQuery(document).ready(function () {
+
+        jQuery('#registered-date').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            dateFormat: 'mm/yy'
+        });
+
 
         jQuery('.add-car').validate({
             rules: {

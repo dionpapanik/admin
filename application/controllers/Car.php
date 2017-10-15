@@ -21,4 +21,10 @@ class Car extends CI_Controller
         $this->load->view('addcar');
     }
 
+    public function add()
+    {
+        $this->load->view('addcar');
+    }
+
+
 }
