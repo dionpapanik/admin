@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="col-sm-8">
 
                         <?php $options = array(
-                            '',
+                            '' => 'Παρακαλώ Επιλέξτε',
                             'Opel',
                             'BMW',
                             'Mercedes',
@@ -132,9 +132,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
                 <?php echo form_close(); ?>
             </div>
-            <div class="card-footer small text-muted">
-                Τελευταία ενημέρωση <?php // echo $last_update; ?>
-            </div>
         </div>
     </div>
     <!-- /.container-fluid -->
@@ -148,25 +145,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script type="text/javascript">
     jQuery(document).ready(function () {
 
-        jQuery(".chosen-select").chosen();
-
-
-
-        /*jQuery('.edit-account').validate({
+        jQuery('.add-car').validate({
             rules: {
-                name: {
+                manufacturer: {
                     required: true
                 },
-                address: {
+                model: {
                     required: true
-                },
-                phone: {
-                    required: true,
-                    number: true
-                },
-                password: {
-                    required: true,
-                    minlength: 6
                 }
             },
             highlight: function (element) {
@@ -184,7 +169,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     error.insertAfter(element);
                 }
             }
-        });*/
+        });
     });
 
 </script>

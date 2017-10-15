@@ -26,3 +26,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <link href="<?php echo base_url('assets/chosen/chosen.css'); ?>" rel="stylesheet">
 <link href="<?php echo base_url('assets/css/sb-admin.css'); ?>" rel="stylesheet">
 <script src="<?php echo base_url('assets/jquery/jquery.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/jquery/jquery-ui.min.js'); ?>"></script>

@@ -15,7 +15,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav">
-            <li class="nav-item <?php echo (get_active_menu('dashboard')) ?  "active" : '' ?>" data-toggle="tooltip"
+            <li class="nav-item <?php echo (get_active_menu('dashboard')) ? "active" : '' ?>" data-toggle="tooltip"
                 data-placement="right" title="Πίνακας Ελέγχου">
                 <a class="nav-link" href="<?php echo base_url('dashboard') ?>">
                     <i class="fa fa-fw fa-area-chart"></i>
@@ -24,7 +24,8 @@
                     </span>
                 </a>
             </li>
-            <li class="nav-item <?php echo (get_active_menu('account')) ?  "active" : '' ?>" data-toggle="tooltip" data-placement="right" title="Ο Λογαριασμός μου">
+            <li class="nav-item <?php echo (get_active_menu('account')) ? "active" : '' ?>" data-toggle="tooltip"
+                data-placement="right" title="Ο Λογαριασμός μου">
                 <a class="nav-link" href="<?php echo base_url('account') ?>">
                     <i class="fa fa-fw fa-user-o"></i>
                     <span class="nav-link-text">
@@ -40,18 +41,19 @@
                     </span>
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseComponents">
-                    <li>
-                        <a href="#">Πρώτο</a>
-                    </li>
-                    <li>
-                        <a href="#">Δεύτερο</a>
-                    </li>
-                    <li>
-                        <a href="#">Χιλιοστό</a>
-                    </li>
-                    <li class="<?php echo (get_active_menu('car')) ?  "active" : '' ?>">
+
+
+                    <?php
+                    /**
+                     * use of Cars_Menu lib to load the menu dropdown
+                     */
+                    echo $this->cars_menu->buildDropdownΜenu($this->session->userdata['id']);
+                    ?>
+
+                    <li class="<?php echo (get_active_menu('car')) ? "active" : '' ?>">
                         <a href="<?php echo base_url('car') ?>">Προσθήκη Οχήματος</a>
                     </li>
+
                 </ul>
             </li>
         </ul>
