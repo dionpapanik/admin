@@ -30,20 +30,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fa fa-fw fa-user-o"></i>
+                <i class="fa fa-fw fa-car"></i>
                 Προσθήκη Οχήματος
             </div>
             <div class="card-body">
-                <?php echo form_open('car/addnew', array('class' => 'add-car')); ?>
+                <?php echo form_open('car/newCarRegistration', array('class' => 'add-car')); ?>
                 <div class="form-group row">
                     <label for="name" class="col-sm-2 col-form-label">Κατασκευαστής</label>
                     <div class="col-sm-8">
 
                         <?php $options = array(
                             '' => 'Παρακαλώ Επιλέξτε',
-                            'Opel',
-                            'BMW',
-                            'Mercedes',
+                            'Opel' => 'Opel',
+                            'BMW' => 'BMW',
+                            'Mercedes' => 'Mercedes'
                         ) ?>
                         <?php echo form_dropdown(
                             array(
@@ -66,18 +66,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="address" class="col-sm-2 col-form-label">Κυβικά Εκατοστά</label>
-                    <div class="col-sm-8">
-                        <?php echo form_input(
-                            array(
-                                'id' => 'displacement',
-                                'name' => 'displacement',
-                                'class' => 'form-control',
-                                'placeholder' => 'Κυβικά Εκατοστά'
-                            )); ?>
-                    </div>
-                </div>
-                <div class="form-group row">
                     <label for="phone" class="col-sm-2 col-form-label">Αριθμός Κυκλοφορίας</label>
                     <div class="col-sm-8">
                         <?php echo form_input(
@@ -86,6 +74,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 'name' => 'plate',
                                 'class' => 'form-control',
                                 'placeholder' => 'Αριθμός Κυκλοφορίας'
+                            )); ?>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="address" class="col-sm-2 col-form-label">Κυβικά Εκατοστά</label>
+                    <div class="col-sm-8">
+                        <?php echo form_input(
+                            array(
+                                'id' => 'displacement',
+                                'name' => 'displacement',
+                                'class' => 'form-control',
+                                'placeholder' => 'Κυβικά Εκατοστά'
                             )); ?>
                     </div>
                 </div>
@@ -116,10 +116,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="row text-center">
                     <div class="col-sm-12">
                         <?php echo validation_errors(); ?>
-
-                        <?php if ($this->session->flashdata('update_user_data_success')): ?>
+                        <?php if ($this->session->flashdata('add_car_success')): ?>
                             <div class="alert alert-success">
-                                <?php echo $this->session->flashdata('update_user_data_success'); ?>
+                                <?php echo $this->session->flashdata('add_car_success'); ?>
                             </div>
                         <?php endif; ?>
 
@@ -156,6 +155,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         jQuery('.add-car').validate({
             rules: {
                 manufacturer: {
+                    required: true
+                },
+                plate: {
                     required: true
                 },
                 model: {

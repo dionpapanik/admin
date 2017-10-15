@@ -6,14 +6,14 @@
 </head>
 
 <body class="<?php echo $_ci_view; ?>-page">
-<div class="head mb-md-5 mb-sm-5">
+<div class="head mb-5">
     <a href="<?php echo base_url(); ?>">
         <img src="<?php echo get_image_url('logo.png') ?>">
     </a>
 </div>
 <div class="container-fluid">
     <div class="content">
-        <div class="row my-md-4 my-sm-4">
+        <div class="row my-4">
             <div class="col-md-12 text-center">
                 <h4>Υπηρεσία MyService</h4>
                 <h4>Συνδεθείτε στο λογαριασμό σας</h4>
@@ -73,16 +73,16 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row pb-4">
             <div class="col-sm-12 col-md-6">
-                <div class="text-center pt-2">
+                <div class="text-center pt-3">
                     <a href="<?php echo base_url('auth/register'); ?>">
                         <i class="fa fa-user"></i> Νέος Λογαριασμός
                     </a>
                 </div>
             </div>
             <div class="col-sm-12 col-md-6">
-                <div class="text-center pt-2">
+                <div class="text-center pt-3">
                     <a href="<?php echo base_url('auth/forgotpassword'); ?>">
                         <i class="fa fa-key"></i> Υπενθύμιση Κωδικού
                     </a>

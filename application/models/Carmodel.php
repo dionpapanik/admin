@@ -26,15 +26,24 @@ class Carmodel extends CI_Model
         return $data;
     }
 
-
-    public function getCarMenuPerUser($userId)
+    public function registerNewCar($userId, $manufacturer, $model, $plate, $displacement, $mileage, $registeredDate)
     {
-        $data = array();
-        $getCar = $this->db->get_where('cars', array('user_id' => $userId));
-        foreach ($getCar->result() as $carData) {
-            $data[] = $carData->manufacturer . ' ' . $carData->model;
-        }
-        return $data;
+        $carData = array(
+            'user_id' => $userId,
+            'manufacturer' => $manufacturer,
+            'model' => $model,
+            'displacement' => $displacement,
+            'plate' => $plate,
+            'mileage' => $mileage,
+            'registered_date' => $registeredDate,
+        );
+
+        $this->db->insert('cars', $carData);
+        return ($this->db->affected_rows() !== 1)
+            ? false
+            : true;
+
     }
+
 
 }
