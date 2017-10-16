@@ -20,6 +20,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 <div class="content-wrapper py-3">
+
+    <?php if ($this->session->flashdata('general_errors')): ?>
+        <div class="col-lg-12">
+            <div class="alert text-center alert-danger">
+                <h5>
+                    <?php echo $this->session->flashdata('general_errors'); ?>
+                </h5>
+            </div>
+        </div>
+    <?php endif; ?>
+
+
     <div class="container-fluid">
         <!-- Breadcrumbs -->
         <ol class="breadcrumb">

@@ -24,8 +24,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li class="breadcrumb-item">
                 <a href="#">Τα Οχήματά μου</a>
             </li>
-            <li class="breadcrumb-item active">Όνομα Οχήματος</li>
+            <li class="breadcrumb-item active"><?php echo $manufacturer . ' ' . $model; ?></li>
         </ol>
+
+        <?php dump($displacement, 'displacement'); ?>
+        <?php dump($mileage, 'mileage'); ?>
 
     </div>
     <!-- /.container-fluid -->

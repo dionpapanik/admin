@@ -12,10 +12,13 @@ class Carmodel extends CI_Model
         $this->load->database();
     }
 
-    public function getCarDataPerUser($userId)
+    public function getCarDataPerUser($carId, $userId)
     {
         $data = array();
-        $getCar = $this->db->get_where('cars', array('user_id' => $userId));
+        $getCar = $this->db->get_where('cars', array(
+            'user_id' => $userId,
+            'id' => $carId
+        ));
         foreach ($getCar->result() as $carData) {
             $data['manufacturer'] = $carData->manufacturer;
             $data['model'] = $carData->model;

@@ -9,11 +9,11 @@ class Car extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('carmodel');
         if (!isset($this->session->userdata['logged_in'])) {
             $this->session->set_flashdata('auth_error', 'Συνδεθείτε στο λογαριασμό σας!');
             redirect(base_url());
         }
+        $this->load->model('carmodel');
     }
 
     public function index()
@@ -28,7 +28,16 @@ class Car extends CI_Controller
 
     public function view()
     {
-        $this->load->view('viewcar');
+        $carId = $this->uri->segment(3);
+        $userId = $this->session->userdata['id'];
+        $carData = $this->carmodel->getCarDataPerUser($carId, $userId);
+
+        if (empty($carData)) {
+            $this->session->set_flashdata('general_errors', 'Δεν έχετε δικαίωμα πρόσβασης');
+            redirect(base_url('dashboard'));
+        } else {
+            $this->load->view('viewcar', $carData);
+        }
     }
 
 
