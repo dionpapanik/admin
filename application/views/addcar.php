@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             array(
                                 'id' => 'manufacturer',
                                 'name' => 'manufacturer',
-                                'class' => 'form-control',
+                                'class' => 'form-control select-2-drop',
                             ), $options); ?>
                     </div>
                 </div>
@@ -143,6 +143,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <script type="text/javascript">
     jQuery(document).ready(function () {
+
+        jQuery(document).ready(function() {
+            jQuery('.select-2-drop').select2();
+        });
 
         jQuery('#registered-date').datepicker({
             changeMonth: true,

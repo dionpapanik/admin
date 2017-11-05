@@ -12,7 +12,7 @@
 
 <!-- Plugin JavaScript -->
 <script src="<?php echo base_url('assets/jquery-easing/jquery.easing.min.js'); ?>"></script>
-<script src="<?php echo base_url('assets/chosen/chosen.jquery.js'); ?>"></script>
+<script src="<?php echo base_url('assets/select2/select2.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/jquery-validate/validate.js'); ?>"></script>
 <script src="<?php echo base_url('assets/chart.js/Chart.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/datatables/jquery.dataTables.js'); ?>"></script>

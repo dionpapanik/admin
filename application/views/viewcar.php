@@ -27,8 +27,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <li class="breadcrumb-item active"><?php echo $manufacturer . ' ' . $model; ?></li>
         </ol>
 
-        <?php dump($displacement, 'displacement'); ?>
-        <?php dump($mileage, 'mileage'); ?>
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fa fa-fw fa-car"></i>
+                Στοιχεία Οχήματος
+            </div>
+            <div class="card-body">
+                <?php dump($displacement, 'displacement'); ?>
+                <?php dump($mileage, 'mileage'); ?>
+            </div>
+        </div>
+
+
 
     </div>
     <!-- /.container-fluid -->
